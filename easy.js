@@ -36,6 +36,8 @@ const isPalindrome = str => {
 // EDGE CASES are array.length = 1 or 2, 2 equal values in array can be used to get targetsum
 // Ex: [3, -1, 0, 3] & targetsum is 6
 
+// Other solution with left & right pointers, going toward the center.The input array needs to be sorted O(n(log(n))) in time, but O(1) in space
+
 const twoNumSum = (arr, target) => {
   const ref = {};
   for (const num of arr) {
@@ -45,4 +47,26 @@ const twoNumSum = (arr, target) => {
     }
   }
   return [];
+};
+
+//******************************************************************* */
+// Closest value in BST
+// Avg O(log(n)) in time | O(1) in space
+
+const closestVal = (tree, target) => {
+  return helper(tree, target, Infinity);
+};
+
+const helper = (tree, target, closest) => {
+  let current = tree;
+
+  while (current !== null) {
+    if (Math.abs(target - closest) > Math.abs(target - current.value)) {
+      closest = current.value;
+    }
+    if (target < current.value) current = current.left;
+    if (target > current.value) current = current.right;
+    if (target === current.value) break;
+  }
+  return closest;
 };
