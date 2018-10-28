@@ -44,6 +44,8 @@ const twoNumSum = (arr, target) => {
     const diff = target - num;
     if (diff in ref) {
       return [num, diff].sort((a, b) => a - b);
+    } else {
+      ref[num] = true;
     }
   }
   return [];
@@ -51,7 +53,10 @@ const twoNumSum = (arr, target) => {
 
 //******************************************************************* */
 // Closest value in BST
+
+// Iteration (While loop)
 // Avg O(log(n)) in time | O(1) in space
+// Worst O(n) in time | O(1) in space
 
 const closestVal = (tree, target) => {
   return helper(tree, target, Infinity);
@@ -69,4 +74,23 @@ const helper = (tree, target, closest) => {
     if (target === current.value) break;
   }
   return closest;
+};
+
+// Recursion
+// Avg O(log(n)) in time | O(log(n)) in space
+// Worst O(n) in time | O(n) in space
+
+const helperTwo = (tree, target, closest) => {
+  if (tree === null) return closest;
+
+  if (Math.abs(target - closest) > Math.abs(target - tree.value)) {
+    closest = tree.value;
+  }
+  if (target < tree.value) {
+    return helperTwo(tree.left, target, closest);
+  } else if (target > tree.value) {
+    return helperTwo(tree.right, taregt, closest);
+  } else {
+    return closest;
+  }
 };
