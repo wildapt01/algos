@@ -89,8 +89,19 @@ const helperTwo = (tree, target, closest) => {
   if (target < tree.value) {
     return helperTwo(tree.left, target, closest);
   } else if (target > tree.value) {
-    return helperTwo(tree.right, taregt, closest);
+    return helperTwo(tree.right, target, closest);
   } else {
     return closest;
   }
 };
+
+//******************************************************************* */
+// Nth Fibonacci number
+
+// Recusion, with O(2^n) time complexity
+const fib = n => (n <= 2 ? n - 1 : fib(n - 1) + fib(n - 2));
+
+// Memoization, with O(n) time complexity
+// _.memoize could also be used
+const fib = (n, memo = { 1: 0, 2: 1 }) =>
+  n in memo ? memo[n] : fib(n - 1, memo) + fib(n - 2, memo);
