@@ -105,3 +105,32 @@ const fib = n => (n <= 2 ? n - 1 : fib(n - 1) + fib(n - 2));
 // _.memoize could also be used
 const fib = (n, memo = { 1: 0, 2: 1 }) =>
   n in memo ? memo[n] : fib(n - 1, memo) + fib(n - 2, memo);
+
+//******************************************************************* */
+// Merge sort
+
+// APPROACH: typically "divide and conquer"
+// 1st step is to split the input array down to a chain of arrays with only one element each, sub-array.length = 1
+
+// Then, with recursion the single element arrays are
+// recombined in ascending order, comparing the first
+//element of each. The lowest is added to the result array
+
+const mergeSort = arr => {
+  if (arr.length < 2) return arr;
+
+  const mid = Math.floor(arr.length / 2);
+  const subLeft = mergesoft(arr.slice(0, mid));
+  const subRight = mergesoft(arr.slice(mid));
+
+  return merge(subLeft, subRight);
+};
+
+const merge = (arr1, arr2) => {
+  const result = [];
+  while (arr1.length > 0 && arr2.length > 0) {
+    result.push(arr1[0] < arr2[0] ? arr1.shift() : arr2.shift());
+  }
+
+  return [...result, ...arr1, ...arr2];
+};
