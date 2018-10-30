@@ -116,22 +116,22 @@ const fib = (n, memo = { 1: 0, 2: 1 }) =>
 // recombined in ascending order, comparing the first
 //element of each. The lowest is added to the result array
 
-const mergeSort = arr => {
-  if (arr.length < 2) return arr;
-
-  const mid = Math.floor(arr.length / 2);
-  const subLeft = mergesoft(arr.slice(0, mid));
-  const subRight = mergesoft(arr.slice(mid));
-
-  return merge(subLeft, subRight);
-};
-
 const merge = (arr1, arr2) => {
   const result = [];
   while (arr1.length > 0 && arr2.length > 0) {
     result.push(arr1[0] < arr2[0] ? arr1.shift() : arr2.shift());
   }
   return [...result, ...arr1, ...arr2];
+};
+
+const mergeSort = arr => {
+  if (arr.length < 2) return arr;
+
+  const mid = Math.floor(arr.length / 2);
+  const subLeft = mergeSort(arr.slice(0, mid));
+  const subRight = mergeSort(arr.slice(mid));
+
+  return merge(subLeft, subRight);
 };
 
 //******************************************************************* */
