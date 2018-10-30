@@ -26,6 +26,18 @@ const isPalindrome = str => {
   return false;
 };
 
+// iteration with pointers O(n) time, O(1) space
+const isPalindrome = str => {
+  let leftIndx = 0;
+  let rightIndx = str.length - 1;
+  while (leftIndx < rightIndx) {
+    if (str[leftIndx] !== str[rightIndx]) return false;
+    leftIndx++;
+    rightIndx--;
+  }
+  return true;
+};
+
 //******************************************************************* */
 // Two-numbers Sum
 
