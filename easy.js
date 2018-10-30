@@ -131,6 +131,24 @@ const merge = (arr1, arr2) => {
   while (arr1.length > 0 && arr2.length > 0) {
     result.push(arr1[0] < arr2[0] ? arr1.shift() : arr2.shift());
   }
-
   return [...result, ...arr1, ...arr2];
+};
+
+//******************************************************************* */
+// Binary search
+
+// APPROACH:
+// 1st step is defining the middle of the list of numbers.
+// If the target is not in one of the halves, that half is eliminated
+// Gives a time complexity of O(log(n)),
+// space complexity is O(log(n)) if recursion, O(1) if iteration
+
+const binSearch = (arr, target, start = 0, stop = arr.length - 1) => {
+  let mid = Math.floor((start + stop) / 2);
+
+  while (arr[mid] !== target && start < stop) {
+    target < arr[mid] ? (stop = mid - 1) : (start = mid + 1);
+    mid = Math.floor((start + stop) / 2);
+  }
+  return arr[mid] !== target ? -1 : mid;
 };
