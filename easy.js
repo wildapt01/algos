@@ -166,3 +166,35 @@ const binSearch = (arr, target, start = 0, stop = arr.length - 1) => {
 };
 
 //******************************************************************* */
+// Caesar Cipher
+
+// APPROACH:
+// Using methods giving the Unicaode value of a character, and the opposite.
+// String.fromCharCode(int) | str.charCodeAt(indx)
+// Cases to keep in mind: key > 26 and newletter > 26. Need to wrap around alphabet
+// Several ways, all O(n) time and space.
+// Here using a helper function to create a Dictionnary object (O(1) look-up time)
+
+function caesarCipherEncryptor(string, key) {
+  const newKey = key % 26;
+  const dictionnary = makeDictionnary("a");
+  let newStr = "";
+
+  for (const letter of string) {
+    const newLetterCode = letter.charCodeAt(0) + newKey;
+    const newLetter = newLetterCode <= 122
+      ? dictionnary[newLetterCode]
+      : dictionnary[newLetterCode - 26];
+    newStr += newLetter;
+  }
+  return newStr;
+}
+
+function makeDictionnary(start) {
+  const dictionnary = {};
+  for (i = 0; i < 26; i++) {
+    dictionnary[start.charCodeAt(0) + i] = String.fromCharCode(start.charCodeAt(0) + i);
+  }
+  return dictionnary;
+}
+//******************************************************************* */
