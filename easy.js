@@ -172,7 +172,7 @@ const binSearch = (arr, target, start = 0, stop = arr.length - 1) => {
 // Caesar Cipher
 
 // APPROACH:
-// Using methods giving the Unicaode value of a character, and the opposite.
+// Using methods giving the Unicode value of a character, and the opposite.
 // String.fromCharCode(int) | str.charCodeAt(indx)
 // Cases to keep in mind: key > 26 and newletter > 26. Need to wrap around alphabet
 // Several ways, all O(n) time and space.
