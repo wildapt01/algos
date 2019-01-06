@@ -137,9 +137,12 @@ const merge = (arr1, arr2) => {
 };
 
 const mergeSort = arr => {
+  // Base case
   if (arr.length < 2) return arr;
 
   const mid = Math.floor(arr.length / 2);
+
+  // Recursion
   const subLeft = mergeSort(arr.slice(0, mid));
   const subRight = mergeSort(arr.slice(mid));
 
