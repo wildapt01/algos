@@ -11,10 +11,10 @@ Sample output: [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
 // Approach:
 // Brute force ==> 3 loops, and O(n^3) time
 // 1- Sort the input array
-// 2- use pointers to check if the sum of the 3 is equal to target
+// 2- use pointers to check if the sum of the 3 numbers is equal to target
 // incrementing the left pointer ==> larger sum
 // decrementing the right pointer ==> smaller sum
-// for loop to iterate through the array, that is the first number for the sum
+// For loop to iterate through the array, that is the first number for the sum
 // while loop until left pointer === right pointer
 // O(n^2) time O(n) space
 
