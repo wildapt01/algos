@@ -185,9 +185,10 @@ function caesarCipherEncryptor(string, key) {
 
   for (const letter of string) {
     const newLetterCode = letter.charCodeAt(0) + newKey;
-    const newLetter = newLetterCode <= 122
-      ? dictionnary[newLetterCode]
-      : dictionnary[newLetterCode - 26];
+    const newLetter =
+      newLetterCode <= 122
+        ? dictionnary[newLetterCode]
+        : dictionnary[newLetterCode - 26];
     newStr += newLetter;
   }
   return newStr;
@@ -196,7 +197,9 @@ function caesarCipherEncryptor(string, key) {
 function makeDictionnary(start) {
   const dictionnary = {};
   for (i = 0; i < 26; i++) {
-    dictionnary[start.charCodeAt(0) + i] = String.fromCharCode(start.charCodeAt(0) + i);
+    dictionnary[start.charCodeAt(0) + i] = String.fromCharCode(
+      start.charCodeAt(0) + i
+    );
   }
   return dictionnary;
 }
@@ -214,24 +217,24 @@ function makeDictionnary(start) {
 
 // Best: O(n) time, O(1) space. Average & worst: O(n^2) time, O(1) space
 
-const bubbleSort = array =>{
+const bubbleSort = array => {
   let sorted = false;
   let counter = 0;
-  while (!sorted){
+  while (!sorted) {
     sorted = true;
-    for (i=0; i<array.length-1-counter; i++) {
-      if (array[i]>array[i+1]){
-        swap(array, i, i+1);
-        sorted=false;
+    for (i = 0; i < array.length - 1 - counter; i++) {
+      if (array[i] > array[i + 1]) {
+        swap(array, i, i + 1);
+        sorted = false;
       }
     }
     counter++;
   }
   return array;
-}
+};
 
-const swap = (arr, i, j)=>{
+const swap = (arr, i, j) => {
   const temp = arr[i];
-  arr[i]=arr[j]
-  arr[j]=temp;
-}
+  arr[i] = arr[j];
+  arr[j] = temp;
+};
