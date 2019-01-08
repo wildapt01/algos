@@ -201,3 +201,37 @@ function makeDictionnary(start) {
   return dictionnary;
 }
 //******************************************************************* */
+// Bubble Sort
+
+// Write a function which takes in an array of integers and returns the
+// array sorted. Use Bubble Sort.
+
+//[8, 5, 2, 9, 5, 6, 3] ==> [2, 3, 5, 5, 6, 8 , 9]
+
+// APPROACH:
+//  Traverse the input array, swapping any two numbers that are out of // order and keeping track of any swaps that you make. Once you arrive // at the end of the array, check if you have made any swaps; if not,  // the array is sorted and you are done; otherwise, repeat the steps
+// laid out in this hint until the array is sorted.
+
+// Best: O(n) time, O(1) space. Average & worst: O(n^2) time, O(1) space
+
+const bubbleSort = array =>{
+  let sorted = false;
+  let counter = 0;
+  while (!sorted){
+    sorted = true;
+    for (i=0; i<array.length-1-counter; i++) {
+      if (array[i]>array[i+1]){
+        swap(array, i, i+1);
+        sorted=false;
+      }
+    }
+    counter++;
+  }
+  return array;
+}
+
+const swap = (arr, i, j)=>{
+  const temp = arr[i];
+  arr[i]=arr[j]
+  arr[j]=temp;
+}
