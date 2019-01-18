@@ -254,7 +254,8 @@ const swap = (arr, i, j) => {
 
 // Flattens array with 2 levels of nesting, & removes duplicates
 const flattenTwoLevels = arr => {
-  return Array.from(new Set([].concat(...arr)));
+  return [...new Set([].concat(...arr))];
+//  return Array.from(new Set([].concat(...arr)));
 }
 
 // Flattens array with N levels of nesting, recursively, & removes duplicates
