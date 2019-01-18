@@ -242,7 +242,8 @@ const swap = (arr, i, j) => {
 // Flatten Array
 
 // Write a function which flatten nested arrays and removes the duplicates.
-// Consider 2 levels of nesting and N levels of nesting.
+// Consider 2 levels of nesting and N levels of nesting. Keep the elements of the
+// input array in the same order.
 
 // USE ES6 syntax
 // DO NOT USE: for or while loops
