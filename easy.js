@@ -263,3 +263,47 @@ const flattenNLevels = arr => {
   }
   return arr;
 }
+
+//******************************************************************* */
+// Insertion Sort
+
+// Write a function which takes in an array of integers and returns the
+// array sorted. Use Insertion Sort.
+
+//[8, 5, 2, 9, 5, 6, 3] ==> [2, 3, 5, 5, 6, 8 , 9]
+
+// APPROACH:
+// First element of input array is sorted, then take the next and swap if inferior
+// to the preceding element. Do until reaching the end of the input array.
+// Good and fast for small arrays (<50 elements), faster than Quicksort.
+// Not efficient for large arrays.
+
+// O(n) time at best, O(n^2) avg and worst. O(1) space.
+
+const insertionSort = array => {
+  for (let i = 1, j; i < array.length; i++) {
+    let currentVal = array[i];
+    for (j = i - 1; j > -1 && array[j] > currentVal; j--) {
+      array[j + 1] = array[j];
+    }
+    array[j + 1] = currentVal;
+  }
+  return array;
+};
+
+// Other way with helper function swap
+const insertionSort = array => {
+  for (let i = 1, j = i; i < array.length; i++) {
+    while (j > 0 && array[j] < array[j - 1]) {
+      swap(array, j, j - 1);
+      j -= 1;
+    }
+  }
+  return array;
+};
+
+const swap = (arr, i, j) => {
+  const temp = arr[i];
+  arr[i] = arr[j];
+  arr[j] = temp;
+};
