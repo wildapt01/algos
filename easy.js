@@ -238,3 +238,28 @@ const swap = (arr, i, j) => {
   arr[i] = arr[j];
   arr[j] = temp;
 };
+//******************************************************************* */
+// Flatten Array
+
+// Write a function which flatten nested arrays and removes the duplicates.
+// Consider 2 levels of nesting and N levels of nesting.
+
+// USE ES6 syntax
+// DO NOT USE: for or while loops
+
+// INPUT array2 = [2,5,3,"art",[5,1,"test", 18,12,4],11,["beta", 7],"test"]
+// INPUT arrayN = [2,5,3,"art",[5,1,["test", 18,[12]],4],11,"beta", 7,"test"];
+// OUTPUT: [ 2, 5, 3, 'art', 1, 'test', 18, 12, 4, 11, 'beta', 7 ]
+
+// Flattens array with 2 levels of nesting, & removes duplicates
+const flattenTwoLevels = arr => {
+  return Array.from(new Set([].concat(...arr)));
+}
+
+// Flattens array with N levels of nesting, recursively, & removes duplicates
+const flattenNLevels = arr => {
+  if(arr.some(item => Array.isArray(item))){
+    arr = flattenNLevels(Array.from(new Set([].concat(...arr))));
+  }
+  return arr;
+}
