@@ -51,3 +51,7 @@ const threeNumSum = (arr, target) => {
 // Approach:
 // First sort the arrays.
 // Then use 1 pointer per array, starting at 0.
+// If the difference between each value at the pointers is 0, return this pair.
+// Else, increment the pointer of the smallest number of the 2.
+// Loop until reaching the end of the smallest array as they can have different
+// lengths.
