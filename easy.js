@@ -255,16 +255,16 @@ const swap = (arr, i, j) => {
 // Flattens array with 2 levels of nesting, & removes duplicates
 const flattenTwoLevels = arr => {
   return [...new Set([].concat(...arr))];
-//  return Array.from(new Set([].concat(...arr)));
-}
+  //  return Array.from(new Set([].concat(...arr)));
+};
 
 // Flattens array with N levels of nesting, recursively, & removes duplicates
 const flattenNLevels = arr => {
-  if(arr.some(item => Array.isArray(item))){
+  if (arr.some(item => Array.isArray(item))) {
     arr = flattenNLevels(Array.from(new Set([].concat(...arr))));
   }
   return arr;
-}
+};
 
 //******************************************************************* */
 // Insertion Sort
@@ -308,4 +308,48 @@ const swap = (arr, i, j) => {
   const temp = arr[i];
   arr[i] = arr[j];
   arr[j] = temp;
+};
+
+//******************************************************************* */
+// Palindrome number
+
+// Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+// Example 1:
+// Input: 121
+// Output: true
+// Example 2:
+// Input: -121
+// Output: false
+// Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
+// Example 3:
+// Input: 10
+// Output: false
+// Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
+// Follow up:
+// Coud you solve it without converting the integer to a string?
+
+const isPalindrome = int => {
+  const reversedInt = Number(
+    int
+      .toString()
+      .split("")
+      .reverse()
+      .join("")
+  );
+  return int === reversedInt;
+};
+
+// Follow up: no string convertion
+const isPalindrome = int => {
+  let rem = 0;
+  let final = 0;
+  const temp = int;
+
+  while (int > 0) {
+    rem = int % 10;
+    int = Math.trunc(int / 10);
+    final = final * 10 + rem;
+  }
+
+  return temp === final;
 };
