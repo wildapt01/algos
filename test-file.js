@@ -1,22 +1,10 @@
 const myAtoi = str => {
-  // let result = 0;
-
-  const tempStr = str.replace(/\s/gi, "");
-  const tempNum = parseInt(tempStr, 10);
-  const startStr = tempStr.substring(0, 2);
-
-  console.log(startStr);
-  //Check if tempStr is NaN
-  if (!tempStr || !tempNum) return 0;
-
-  //Check for Infinity or -Infinity
-  // if (tempNum > Infinity) {
-  //   result = Number.MAX_VALUE;
-  // } else if (tempNum < -Infinity) {
-  //   result = Number.MIN_VALUE;
-  // }
-
-  return tempNum;
+  const MAX = Math.pow(2, 31);
+  const tempNum = parseInt(str, 10);
+  let result = Math.trunc(tempNum) || 0;
+  if (result > MAX - 1) result = MAX - 1;
+  if (result < -MAX) result = -MAX;
+  return result;
 };
 
-console.log(myAtoi("  -a234 word zHello AH!"));
+console.log(myAtoi("  -0000007.1a773 word"));
