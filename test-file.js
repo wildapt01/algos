@@ -1,17 +1,22 @@
-const palindromeInt = int => {
-  let rem = 0;
-  let final = 0;
-  const temp = int;
+const myAtoi = str => {
+  // let result = 0;
 
-  while (int > 0) {
-    rem = int % 10;
-    int = Math.trunc(int / 10);
-    final = final * 10 + rem;
-    console.log("===============================");
-    console.log("rem: ", rem, "\nint: ", int, "\nfinal: ", final);
-  }
+  const tempStr = str.replace(/\s/gi, "");
+  const tempNum = parseInt(tempStr, 10);
+  const startStr = tempStr.substring(0, 2);
 
-  return temp === final;
+  console.log(startStr);
+  //Check if tempStr is NaN
+  if (!tempStr || !tempNum) return 0;
+
+  //Check for Infinity or -Infinity
+  // if (tempNum > Infinity) {
+  //   result = Number.MAX_VALUE;
+  // } else if (tempNum < -Infinity) {
+  //   result = Number.MIN_VALUE;
+  // }
+
+  return tempNum;
 };
 
-console.log("==>", palindromeInt(123321));
+console.log(myAtoi("  -a234 word zHello AH!"));
