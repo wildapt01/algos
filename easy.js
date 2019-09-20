@@ -353,3 +353,30 @@ const isPalindrome = int => {
 
   return temp === final;
 };
+
+//******************************************************************* */
+
+/*
+Write a function to find the longest common prefix string amongst an array of strings.
+
+If there is no common prefix, return an empty string "".
+
+Note:
+All given inputs are in lowercase letters a-z.*/
+
+const test1 = ["flower", "flow", "flight"]; // ==> "fl"
+const test2 = ["dog", "racecar", "car"]; // ==> ""
+
+const funct = strs => {
+  let result = "";
+  if (!strs.length) return result;
+  for (let i = 0; i < strs[0].length; i++) {
+    const start = strs[0].slice(0, i + 1);
+    if (strs.every(word => word.startsWith(start))) {
+      result = start;
+    } else {
+      break;
+    }
+  }
+  return result;
+};

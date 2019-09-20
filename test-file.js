@@ -1,10 +1,19 @@
-const myAtoi = str => {
-  const MAX = Math.pow(2, 31);
-  const tempNum = parseInt(str, 10);
-  let result = Math.trunc(tempNum) || 0;
-  if (result > MAX - 1) result = MAX - 1;
-  if (result < -MAX) result = -MAX;
+const test1 = ["flower", "flow", "flight"]; // ==> "fl"
+const test2 = ["dog", "racecar", "car"]; // ==> ""
+
+const funct = strs => {
+  let result = "";
+  if (!strs.length) return result;
+  for (let i = 0; i < strs[0].length; i++) {
+    const start = strs[0].slice(0, i + 1);
+    if (strs.every(word => word.startsWith(start))) {
+      result = start;
+    } else {
+      break;
+    }
+  }
   return result;
 };
 
-console.log(myAtoi("  -0000007.1a773 word"));
+console.log("test1: ", funct(test1));
+console.log("test2: ", funct(test2));
