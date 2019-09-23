@@ -1,19 +1,31 @@
-const test1 = ["flower", "flow", "flight"]; // ==> "fl"
-const test2 = ["dog", "racecar", "car"]; // ==> ""
+const test1 = "III";
+const test2 = "IV";
+const test3 = "IX";
+const test4 = "IX";
+const test5 = "LVIII";
+const test6 = "MCMXCIV";
 
-const funct = strs => {
-  let result = "";
-  if (!strs.length) return result;
-  for (let i = 0; i < strs[0].length; i++) {
-    const start = strs[0].slice(0, i + 1);
-    if (strs.every(word => word.startsWith(start))) {
-      result = start;
-    } else {
-      break;
-    }
-  }
+const romToInt = str => {
+  let result = 0, counter=0;
+  const dict = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+    IV: 4,
+    IX: 9,
+    XL: 40,
+    XC: 90,
+    CD: 400,
+    CM: 900
+  };
+
+  while()
+  result += dict[str] ? dict[str] : 0;
   return result;
 };
 
-console.log("test1: ", funct(test1));
-console.log("test2: ", funct(test2));
+console.log(romToInt(""));
