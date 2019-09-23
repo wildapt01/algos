@@ -5,8 +5,9 @@ const test4 = "IX";
 const test5 = "LVIII";
 const test6 = "MCMXCIV";
 
-const romToInt = str => {
-  let result = 0, counter=0;
+const romToInt = s => {
+  let result = 0,
+    counter = 0;
   const dict = {
     I: 1,
     V: 5,
@@ -23,9 +24,18 @@ const romToInt = str => {
     CM: 900
   };
 
-  while()
-  result += dict[str] ? dict[str] : 0;
+  while (counter < s.length) {
+    const single = dict[s[counter]];
+    const double = dict[s.slice(counter, counter + 2)];
+    if (double) {
+      result += double;
+      counter += 2;
+    } else {
+      result += single;
+      counter++;
+    }
+  }
   return result;
 };
 
-console.log(romToInt(""));
+console.log(romToInt(test6));

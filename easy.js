@@ -409,3 +409,36 @@ Given a roman numeral, convert it to an integer. Input is guaranteed to be withi
 // romToInt("IX") ==> 9
 // romToInt("LVIII") ==> 58
 // romToInt("MCMXCIV") ==> 1994
+
+const romToInt = s => {
+  let result = 0,
+    counter = 0;
+  const dict = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+    IV: 4,
+    IX: 9,
+    XL: 40,
+    XC: 90,
+    CD: 400,
+    CM: 900
+  };
+
+  while (counter < s.length) {
+    const single = dict[s[counter]];
+    const double = dict[s.slice(counter, counter + 2)];
+    if (double) {
+      result += double;
+      counter += 2;
+    } else {
+      result += single;
+      counter++;
+    }
+  }
+  return result;
+};
