@@ -7,14 +7,14 @@
 // iteration
 const isPalindrome = str => {
   let string = str
-    .replace(/[^\w]/gi, "") // replace all non-words characters
+    .replace(/[^\w]/gi, '') // replace all non-words characters
     .toLowerCase(); // make all characters lower cased
   return (
     string ===
     string
-      .split("")
+      .split('')
       .reverse()
-      .join("")
+      .join('')
   );
 };
 
@@ -180,8 +180,8 @@ const binSearch = (arr, target, start = 0, stop = arr.length - 1) => {
 
 function caesarCipherEncryptor(string, key) {
   const newKey = key % 26;
-  const dictionnary = makeDictionnary("a");
-  let newStr = "";
+  const dictionnary = makeDictionnary('a');
+  let newStr = '';
 
   for (const letter of string) {
     const newLetterCode = letter.charCodeAt(0) + newKey;
@@ -332,9 +332,9 @@ const isPalindrome = int => {
   const reversedInt = Number(
     int
       .toString()
-      .split("")
+      .split('')
       .reverse()
-      .join("")
+      .join('')
   );
   return int === reversedInt;
 };
@@ -364,11 +364,11 @@ If there is no common prefix, return an empty string "".
 Note:
 All given inputs are in lowercase letters a-z.*/
 
-const test1 = ["flower", "flow", "flight"]; // ==> "fl"
-const test2 = ["dog", "racecar", "car"]; // ==> ""
+const test1 = ['flower', 'flow', 'flight']; // ==> "fl"
+const test2 = ['dog', 'racecar', 'car']; // ==> ""
 
 const funct = strs => {
-  let result = "";
+  let result = '';
   if (!strs.length) return result;
   for (let i = 0; i < strs[0].length; i++) {
     const start = strs[0].slice(0, i + 1);
@@ -426,7 +426,7 @@ const romToInt = s => {
     XL: 40,
     XC: 90,
     CD: 400,
-    CM: 900
+    CM: 900,
   };
 
   while (counter < s.length) {
@@ -441,4 +441,41 @@ const romToInt = s => {
     }
   }
   return result;
+};
+
+// Valid Parenthesis
+
+/*
+Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+An input string is valid if:
+
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+Note that an empty string is also considered valid.
+
+const test1 = ''; // true
+const test2 = '()'; // true
+const test3 = '()[]{}'; // true
+const test4 = '(]'; // false
+const test5 = '([)]'; // false
+const test6 = '{[]}'; // true
+*/
+
+const isValid = str => {
+  if (!str) return true;
+
+  const open = ['{', '(', '['];
+  const close = ['}', ')', ']'];
+  const stack = [];
+
+  for (let par of str) {
+    if (close.includes(par)) {
+      const current = stack.pop();
+      if (!current || current !== open[close.indexOf(par)]) return false;
+    } else {
+      stack.push(par);
+    }
+  }
+  return !stack.length;
 };

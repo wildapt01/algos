@@ -1,41 +1,26 @@
-const test1 = "III";
-const test2 = "IV";
-const test3 = "IX";
-const test4 = "IX";
-const test5 = "LVIII";
-const test6 = "MCMXCIV";
+const test1 = ''; // true
+const test2 = '()'; // true
+const test3 = '()[]{}'; // true
+const test4 = '(]'; // false
+const test5 = '([)]'; // false
+const test6 = '{[]}'; // true
 
-const romToInt = s => {
-  let result = 0,
-    counter = 0;
-  const dict = {
-    I: 1,
-    V: 5,
-    X: 10,
-    L: 50,
-    C: 100,
-    D: 500,
-    M: 1000,
-    IV: 4,
-    IX: 9,
-    XL: 40,
-    XC: 90,
-    CD: 400,
-    CM: 900
-  };
+const isValid = str => {
+  if (!str) return true;
 
-  while (counter < s.length) {
-    const single = dict[s[counter]];
-    const double = dict[s.slice(counter, counter + 2)];
-    if (double) {
-      result += double;
-      counter += 2;
+  const open = ['{', '(', '['];
+  const close = ['}', ')', ']'];
+  const stack = [];
+
+  for (let par of str) {
+    if (close.includes(par)) {
+      const current = stack.pop();
+      if (!current || current !== open[close.indexOf(par)]) return false;
     } else {
-      result += single;
-      counter++;
+      stack.push(par);
     }
   }
-  return result;
+  return !stack.length;
 };
 
-console.log(romToInt(test6));
+console.log(isValid(test3));
