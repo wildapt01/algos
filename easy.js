@@ -615,3 +615,17 @@ For the purpose of this problem, we will return 0 when needle is an empty string
 const strStr = (haystack, needle) => {
   return haystack.search(needle);
 };
+
+// Other way, a bit faster but uses more memory space
+const strStr = (haystack, needle) => {
+  let result = -1;
+  if (!needle) {
+    result++;
+  } else if (haystack.includes(needle));
+  {
+    for (let i = 0; i < haystack.length; i++) {
+      if (haystack.slice(i, i + needle.length) === needle) return i;
+    }
+  }
+  return result;
+};
