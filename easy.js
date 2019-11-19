@@ -658,3 +658,49 @@ const searchInsert = (nums, target) => {
   }
   return index;
 };
+
+// Count and Say
+
+/*
+The count-and-say sequence is the sequence of integers with the first five terms as following:
+1.     1
+2.     11
+3.     21
+4.     1211
+5.     111221
+1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.
+
+Given an integer n where 1 ≤ n ≤ 30, generate the nth term of the count-and-say sequence.
+
+Note: Each term of the sequence of integers will be represented as a string.
+*/
+/*
+const test1 = 1; // ==> 1
+const test2 = 2; // ==> 11
+const test3 = 3; // ==> 21
+const test4 = 4; //==> 1211
+const test5 = 5; // ==> 111221
+const test10 = 10; // ==> 13211311123113112211
+*/
+
+const countSay = n => {
+  let res = "1";
+
+  while (n > 1) {
+    let temp = "";
+    let cur = "";
+    for (let i = 0; i < res.length; i++) {
+      cur += res[i];
+      if (res[i] !== res[i + 1]) {
+        temp += `${cur.length}${cur[0]}`;
+        cur = "";
+      }
+    }
+    res = temp;
+    n--;
+  }
+
+  return res;
+};
