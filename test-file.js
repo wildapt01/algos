@@ -1,6 +1,6 @@
 const test1 = "Hello World"; // ==> 5
 const test2 = "   fly me   to   the moon  "; // ==> 4
-const test3 = "luffy is still joyboy"; // ==> 6
+const test3 = "luffy is still    joyboy"; // ==> 6
 
 const lengthOfLastWord = (str) => {
   const lastWord = str.trim().split(" ").pop();
