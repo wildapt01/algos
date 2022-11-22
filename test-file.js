@@ -6,18 +6,17 @@ const test5 = [9, 9, 9, 9]; // => [1,0,0,0,0]
 const test6 = [2, 9, 9, 9]; // => [3,0,0,0]
 
 const myFunction = (digits) => {
-  // const newNumber = Number(digits.join("")) + 1;
-  // console.log("newNumber :>> ", newNumber);
-  // return `${newNumber}`.split("");
-  const lastTwoNum = digits.slice(-2);
-  const firstPart = digits.slice(0, -2);
-  if (digits.length < 2) {
-    return lastTwoNum[0] === 9 ? [1, 0] : [lastTwoNum[0] + 1];
-  } else {
-    return lastTwoNum[1] === 9
-      ? [...firstPart, lastTwoNum[0] + 1, 0]
-      : [...firstPart, lastTwoNum[0], lastTwoNum[1] + 1];
+  let i = digits.length - 1;
+  let val = 0;
+  let carry = 1;
+  while (i >= 0 && carry) {
+    val = digits[i] + carry;
+    carry = Math.floor(val / 10);
+    digits[i] = val % 10;
+    i--;
   }
+  if (carry) digits.unshift(carry);
+  return digits;
 };
 
 console.log(myFunction(test1));

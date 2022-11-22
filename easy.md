@@ -710,11 +710,11 @@ const searchInsert = (nums, target) => {
 
 The count-and-say sequence is the sequence of integers with the first five terms as following:
 
-1.                             1
-2.                             11
-3.                             21
-4.                             1211
-5.                             111221
+1.                               1
+2.                               11
+3.                               21
+4.                               1211
+5.                               111221
     1 is read off as "one 1" or 11.
     11 is read off as "two 1s" or 21.
     21 is read off as "one 2, then one 1" or 1211.
@@ -815,4 +815,34 @@ Approach:
 
 1. 1st thought would be to split, add 1, join. Doesn't work for large arrays representing numbers superior to the JS limit.
 2. KISS! the added 1 applies only to the last digit in the array, not the others.
-3. Only edge case is the last digit being a 9, returning `[1, 0]` if input is `[9]` or adding 1 to the second last digit and the last digit is 0.
+3. Edge case is the last digit(s) being a 9, returning `[1, 0]` if input is `[9]` or adding 1 to the second last digit and the last digit is 0.
+
+```javascript
+const test1 = [1, 2, 3]; // ==> [1,2,4]
+const test2 = [4, 3, 2, 1]; // ==> [4,3,2,2]
+const test3 = [9]; // ==> [10]
+const test4 = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]; // ==>[6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,4]
+const test5 = [9, 9, 9, 9]; // => [1,0,0,0,0]
+const test6 = [2, 9, 9, 9]; // => [3,0,0,0]
+
+const myFunction = (digits) => {
+  let i = digits.length - 1;
+  let val = 0;
+  let carry = 1;
+  while (i >= 0 && carry) {
+    val = digits[i] + carry;
+    carry = Math.floor(val / 10);
+    digits[i] = val % 10;
+    i--;
+  }
+  if (carry) digits.unshift(carry);
+  return digits;
+};
+
+console.log(myFunction(test1));
+console.log(myFunction(test2));
+console.log(myFunction(test3));
+console.log(myFunction(test4));
+console.log(myFunction(test5));
+console.log(myFunction(test6));
+```
