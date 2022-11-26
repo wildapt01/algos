@@ -710,11 +710,11 @@ const searchInsert = (nums, target) => {
 
 The count-and-say sequence is the sequence of integers with the first five terms as following:
 
-1.                               1
-2.                               11
-3.                               21
-4.                               1211
-5.                               111221
+1.                                1
+2.                                11
+3.                                21
+4.                                1211
+5.                                111221
     1 is read off as "one 1" or 11.
     11 is read off as "two 1s" or 21.
     21 is read off as "one 2, then one 1" or 1211.
@@ -820,7 +820,7 @@ Approach:
 ```javascript
 const test1 = [1, 2, 3]; // ==> [1,2,4]
 const test2 = [4, 3, 2, 1]; // ==> [4,3,2,2]
-const test3 = [9]; // ==> [10]
+const test3 = [9]; // ==> [1,0]
 const test4 = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]; // ==>[6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,4]
 const test5 = [9, 9, 9, 9]; // => [1,0,0,0,0]
 const test6 = [2, 9, 9, 9]; // => [3,0,0,0]
