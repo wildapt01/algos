@@ -813,7 +813,7 @@ digits does not contain any leading 0's.
 
 Approach:
 
-1. 1st thought would be to join, add 1, split. Doesn't work for large arrays representing numbers superior to the JS limit.
+1. 1st thought would be to join, add 1, split. Doesn't work for large arrays representing numbers superior to the JS limit `Number.MAX_SAFE_INTEGER; // 9007199254740991` or input array length > 16.
 2. KISS! the added 1 applies only to the last digit in the array, not the others. So loop on the input array.
 3. Edge case is the last digit(s) being a 9, returning `[1, 0]` if input is `[9]` or adding 1 to the preceding digit and the last digit is 0.
 4. The carry must be added and the loop must start backward, from the last index to the 0 index. The carry needs to be evaluated as well for the `[9] ==> [1,0]` case. Some math is needed to keep the unit value no matter the carry (modulo operator).
