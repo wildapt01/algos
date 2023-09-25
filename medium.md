@@ -105,3 +105,54 @@ const myAtoi = (str) => {
 ```
 
 ---
+
+## Doors in the school
+
+In the morning all the doors in the school are closed. The school is quite big: there are N doors. Then pupils start coming. It might be hard to believe, but all of them want to study! Also, there are exactly N children studying in this school, and they come one by one.
+
+When these strange children pass by some doors they change their status (i.e. Open -> Closed, Closed -> Open). Each student has their number, and each i-th student alters the status of every i-th door. For example: when the first child comes to the schools, he changes every first door (he opens all of them). The second one changes the status of every second door (he closes some doors: the 2nd, the 4th and so on). Finally, when the last one – the n-th – comes to the school, he changes the status of each n-th door (there's only one such door, though).
+
+You need to count how many doors are **left opened** after all the students have come.
+
+The number of doors and students: n ∈ N, n ∈ [1, 100000]. To start, all doors are closed.
+
+Example:
+doors(5) ==> 2
+doors(1) ==> 1
+
+```javascript
+const doors = (n) => ~~Math.sqrt(n);
+
+console.log(doors(5));
+console.log(doors(1));
+console.log(doors(100000));
+```
+
+---
+
+## Two Nums Sum problem
+
+Input: Array of distinct integers, can include 0 and/or negative integers.
+A target integer, can be negative or 0 .
+Output: Array containing the first pair of integers meeting the condition.
+undefined if no pair can be found.
+
+```javascript
+const twoNumSum = (nums, target) => {
+  const obj = {};
+  for (let i = 0; i < nums.length; i++) {
+    const diff = target - nums[i];
+    if (diff in obj) {
+      return [nums[i], nums[obj[diff]]];
+    }
+    obj[nums[i]] = i;
+  }
+};
+
+console.log(twoNumSum([0, 1, 2, -3, 4, 5, 6, 7], 4)); // [ 4, 0 ]
+console.log(twoNumSum([0, 5, 2, 7, 11, -3, 7, 14], -1)); // [ -3, 2 ]
+console.log(twoNumSum([3, -3, 5], 0)); // [ -3, 3 ]
+console.log(twoNumSum([0, 5, 2, 6, 11, 3, 7, 14], 4)); // undefined
+```
+
+---

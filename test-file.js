@@ -1,27 +1,26 @@
-const test1 = [1, 2, 3]; // ==> [1,2,4]
-const test2 = [4, 3, 2, 1]; // ==> [4,3,2,2]
-const test3 = [9]; // ==> [10]
-const test4 = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]; // ==>[6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,4]
-const test5 = [9, 9, 9, 9]; // => [1,0,0,0,0]
-const test6 = [2, 9, 9, 9]; // => [3,0,0,0]
+// Doors left opened
+// Number of doors = number of students
 
-const myFunction = (digits) => {
-  let i = digits.length - 1;
-  let val = 0;
-  let carry = 1;
-  while (i >= 0 && carry) {
-    val = digits[i] + carry;
-    carry = Math.floor(val / 10);
-    digits[i] = val % 10;
-    i--;
-  }
-  if (carry) digits.unshift(carry);
-  return digits;
-};
+const doors = (n) => ~~Math.sqrt(n);
 
-console.log(myFunction(test1));
-console.log(myFunction(test2));
-console.log(myFunction(test3));
-console.log(myFunction(test4));
-console.log(myFunction(test5));
-console.log(myFunction(test6));
+// const doors = (num) => {
+//   // Open door = 1, closed door = 0
+//   // Start with all doors opened, first student arrival
+//   let current = Array.from({ length: num }, (_) => 0);
+//   // Looping
+//   for (let i = 1; i <= num; i++) {
+//     current = current.map((item, indx) => {
+//       if ((indx + 1) % i === 0) {
+//         return item === 0 ? 1 : 0;
+//       } else {
+//         return item;
+//       }
+//     });
+//   }
+
+//   return current.reduce((tot, item) => tot + item);
+// };
+
+console.log(doors(5));
+console.log(doors(1));
+console.log(doors(100000));
